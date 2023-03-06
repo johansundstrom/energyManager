@@ -1,7 +1,7 @@
 {
   "name": "myenergymanager",
   "version": "1.0.0",
-  "description": "",
+  "description": "read out of values from energy manager",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
