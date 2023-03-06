@@ -12,4 +12,8 @@ Orsaken till denna kod är att ordningen i JSON-filen ständigt ändras. Att lä
 result.items[5].tagValues[j].value;
 ```
 
-Lösningen är att iterera genom samtliga tagNames samt dessas value. Samtidigt blir det då möjligt att också översätta och snygga upp tagNames came case.
+Lösningen är att iterera genom samtliga tagNames samt dessas value. Samtidigt blir det då möjligt att översätta och snygga upp tagNames från  t.ex. obegriplighet och camel case.
+
+```getManagerValues()```
+
+Läser inte bara värden utan tolkar dessa 
