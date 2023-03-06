@@ -1,5 +1,5 @@
 {
-    "E.ON Aura energymanager": "E.ON Aura energymanager",
+    "Solarwatt energymanager": "E.ON Aura energymanager",
     "Solarwatt MyReserve": "Solarwatt MyReserve",
     "type": "type",
     "IP address": "IP address",
@@ -34,7 +34,7 @@
     "ResistanceBatteryMax": "maximum batteryresistance",
     "ResistanceBatteryMean": "mean batteryresistance",
     "ResistanceBatteryMin": "minimum batteryresistance",
-    "StateOfCharge": "stateof charge",
+    "StateOfCharge": "state of charge",
     "StateOfHealth": "rest lifetime",
     "TemperatureBattery": "battery temperature",
     "TemperatureBatteryCellMax": "maximum batterycell temperature",
