@@ -1,0 +1,17 @@
+{
+  "name": "myenergymanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "Johan S",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "i18n-auto-translation": "^1.2.2"
+  }
+}
