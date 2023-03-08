@@ -10,12 +10,16 @@ let request = require('request');
 let nameTranslation;
 let valTagLang;
 
+const kwRounding = true
 const ip = '192.168.250.39'
 
 main()
+//console.log(translateName("round values"))
 
+
+//fungerar men byter inte språk automatiskt
 function translateName(strName) {
-    nameTranslation = require(__dirname + '/lang/i18n/en/translations.json')
+    nameTranslation = require(__dirname + '/lang/i18n/sv/translations.json')
     //nameTranslation = require('./lang/i18n/en/translations.json')
     if(nameTranslation[strName]) {
         return nameTranslation[strName];
@@ -48,7 +52,7 @@ function getManagerValues() {
                         
                         switch (valType) {
                             case "boolean":
-                                var valRole = 'indicator.working';
+                                var valRole = 'indicator.working';  //lustigt rollnamn?
                                 break;
                             
                             case "number":
@@ -92,7 +96,7 @@ function getManagerValues() {
                         }
 
                         if (valTag.search('Work') == 0){
-                            if ("managerRounding" == "no") {
+                            if (!kwRounding) {
                                 valUnit = 'Wh';
                             } else {
                                 valValue = valValue/1000; 
@@ -118,7 +122,7 @@ function getManagerValues() {
                                 valUnit = 'kW';
                             } 
                         } else {
-                            valUnit = '';
+                            valUnit = '';   //skiter i vad det är för enhet
                         }
 
                         if (valType == "number" && valTag.search('Date') == -1) {
@@ -127,28 +131,28 @@ function getManagerValues() {
                         if (valValue != null && content.result.items[i].tagValues.IdName.value != null) {
                             let IDNameClear = content.result.items[i].tagValues.IdName.value
                                 IDNameClear = IDNameClear
-                                    .replace(/[ ]+/g,"_")
-                                    .replace(/[\.]+/g,"")
-                                    .replace(/[\u00df]+/,"SS");
-                            if(content.result.items[i].deviceModel[1] !== undefined) {
+                                    .replace(/[ ]+/g,"_")           //ersätt space med _
+                                    .replace(/[\.]+/g,"")           //ersätt . med ""
+                                    .replace(/[\u00df]+/,"SS");     //tyska dubbel-s
+                            if (content.result.items[i].deviceModel[1] !== undefined) {
                                 switch(content.result.items[i].deviceModel[1].deviceClass) {
                                     case "com.kiwigrid.devices.inverter.Inverter":
                                     case "com.kiwigrid.devices.powermeter.PowerMeter":
-                                        strGroup=translateName(content.result.items[i].deviceModel[2].deviceClass.split(".").pop()) + "_(" + IDNameClear + ")";
+                                        strGroup = translateName(content.result.items[i].deviceModel[2].deviceClass.split(".").pop()) + "_(" + IDNameClear + ")";
                                     break;
     
                                     case "com.kiwigrid.devices.location.Location":
                                     case "com.kiwigrid.devices.pvplant.PVPlant":
-                                        strGroup=translateName(content.result.items[i].deviceModel[1].deviceClass.split(".").pop()) + "_(" + IDNameClear + ")";
+                                        strGroup = translateName(content.result.items[i].deviceModel[1].deviceClass.split(".").pop()) + "_(" + IDNameClear + ")";
                                         break;
                     
                                     default:
-                                        strGroup=translateName(content.result.items[i].deviceModel[1].deviceClass.split(".").pop());
+                                        strGroup = translateName(content.result.items[i].deviceModel[1].deviceClass.split(".").pop());
                                     break;
                                 }
                             }
                         }
-                        console.log(strGroup + ' * ' + valTagLang + ' ' + valRole + ' -- ' + valTag + ': ' + valValue + ' ' + valUnit + ' ++ ' + valType)
+                        console.log(strGroup + '; ' + valTagLang + '; ' + valRole + '; ' + valTag + '; ' + valValue + '; ' + valUnit + '; ' + valType)
 
                         /* if (valValue != null && valType != 'object' && strGroup != '' && strGroup != undefined) {
                             updateState (strGroup,valTag,valTagLang,valType,valUnit,valRole,valValue);
@@ -183,7 +187,7 @@ function getManagerValues() {
 
 
 function main() {
-    console.log(getManagerValues("StateOfCharge"));
+    console.log(getManagerValues());
     //managerIntervall = setInterval(getManagerValues, 5000);
 }
 
