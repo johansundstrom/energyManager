@@ -159,7 +159,6 @@ function getManagerValues() {
                         if (valValue != null && valType != 'object' && strGroup != '' && strGroup != undefined) {
                             console.log(strGroup,valTag,valTagLang,valType,valUnit,valRole,valValue);
                         } else if (valValue != null && valType == 'object' && valTag == 'WeatherForecast') {
-
                             for (var location in valValue) {
                                 var jsonObject = JSON.parse(valValue[location]);
                         
@@ -169,6 +168,7 @@ function getManagerValues() {
                                     var datum = new Date(jsonObject.hourly[day][hour].time*1000);
                                     var localOffset = (-1) * datum.getTimezoneOffset() * 60000;
                                     var stamp = new Date((jsonObject.hourly[day][hour].time*1000 + localOffset));
+                                    console.log('#####' + stamp)
                                     console.log('väder ' + strGroup+"." + translateName('WeatherForecast') + "." + location + "." + day + "." + hour, 'cloudCover' ,translateName('cloudCover'), 'number','','value',jsonObject.hourly[day][hour].cloudCover);
                                     console.log('väder ' + strGroup+"." + translateName('WeatherForecast') + "." + location + "." + day + "." + hour, 'temperature' ,translateName('temperature'), 'number','°C','value.temperature',jsonObject.hourly[day][hour].temperature);
                                     console.log('väder ' + strGroup+"." + translateName('WeatherForecast') + "." + location + "." + day + "." + hour, 'date' ,translateName('date'), 'text','','value.date',stamp);
