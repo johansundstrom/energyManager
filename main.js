@@ -156,11 +156,16 @@ function getManagerValues() {
                         }
                         console.log('***** ' + strGroup + ' - ' + valRole + ' - ' + valTagLang + ': ' + valValue + ' ' + valUnit + ' [' + valType + ']')
 
+
+                        //
+                        // Kolla upp detta
+                        //
                         if (valValue != null && valType != 'object' && strGroup != '' && strGroup != undefined) {
-                            console.log(strGroup,valTag,valTagLang,valType,valUnit,valRole,valValue);
+                            console.log('##### ' + strGroup, valTag, valTagLang, valType, valUnit, valRole, valValue);
                         } else if (valValue != null && valType == 'object' && valTag == 'WeatherForecast') {
                             for (var location in valValue) {
                                 var jsonObject = JSON.parse(valValue[location]);
+                                console.log('#####*****#####' + jsonObject)
                         
                                 for ( var day in jsonObject.hourly) {
 
