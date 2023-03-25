@@ -197,4 +197,3 @@ function main() {
     console.log(getManagerValues());
     //managerIntervall = setInterval(getManagerValues, 5000);
 }
-
