@@ -26,4 +26,4 @@ Läser inte bara värden utan tolkar dessa
 
 ```getManagerValues() //Anropar och hämtar utvalda värden```
 
-```translateName() //i18n översättning (https://developer.mozilla.org/en-US/docs/mozilla/add-ons/webextensions/api/i18n)
+```translateName() //i18n översättning (https://developer.mozilla.org/en-US/docs/mozilla/add-ons/webextensions/api/i18n)```
